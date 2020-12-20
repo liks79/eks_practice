@@ -11,12 +11,12 @@
 import os
 from service import create_app, db
 
-application = create_app()
+app = create_app()
 
-application.logger.info('SQLALCHEMY_DATABASE_URI: {0}'.format(application.config['SQLALCHEMY_DATABASE_URI']))
+app.logger.info('SQLALCHEMY_DATABASE_URI: {0}'.format(app.config['SQLALCHEMY_DATABASE_URI']))
 
 APP_HOST = os.getenv('APP_HOST', '0.0.0.0')
-APP_PORT = os.getenv('APP_PORT', 8080)
+APP_PORT = os.getenv('APP_PORT', 5000)
 
 if __name__ == '__main__':
-    application.run(host=APP_HOST, port=APP_PORT)
+    app.run(host=APP_HOST, port=APP_PORT)
