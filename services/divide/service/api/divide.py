@@ -1,11 +1,12 @@
 """
-    service/api/multiply.py
+    service/api/divide.py
     ~~~~~~~~~~~~~~~~~~~~~~~
 
     :description: Microservice for plus operation
     :copyright: © 2020 written by Sungshik Jou.
     :license: MIT, see LICENSE for more details.
 """
+
 
 import socket
 from service import db
@@ -18,11 +19,11 @@ from jsonschema import ValidationError
 from werkzeug.exceptions import BadRequest, InternalServerError
 from datetime import datetime
 
-multiply_blueprint = Blueprint('multiply', __name__)
-api = Api(multiply_blueprint, doc='/swagger/', title='multiply',
-          description='multiply-operation: \n prefix url "/multiply" is already exist.', version='0.1')
+divide_blueprint = Blueprint('divide', __name__)
+api = Api(divide_blueprint, doc='/swagger/', title='divide',
+          description='divide-operation: \n prefix url "/divide" is already exist.', version='0.1')
 
-user_input = api.model('multiply_operation', {
+user_input = api.model('divide_operation', {
     'operand_1': fields.Float,
     'operand_2': fields.Float
 })
@@ -46,20 +47,20 @@ class Run(Resource):
     })
     @api.expect(user_input)
     def post(self):
-        """ '+',plus api"""
+        """ '/',divide api"""
         req_data = request.get_json()
         try:
             validated = validate_operands(req_data)
             input = validated['data']
             app.logger.debug(input)
-            result = input['operand_1'] * input['operand_2']
+            result = input['operand_1'] / input['operand_2']
 
             response = {
                 'operand_1': input['operand_1'],
-                'operation': '*',
+                'operation': '/',
                 'operand_2': input['operand_2'],
                 'result': result,
-                'expression': '{0} * {1} = {2}'.format(
+                'expression': '{0} / {1} = {2}'.format(
                     input['operand_1'], input['operand_2'], result),
                 'from': get_ip_addr(),
                 'date': datetime.now()

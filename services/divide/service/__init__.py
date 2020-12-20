@@ -67,8 +67,8 @@ def create_app(script_info=None):
     db.init_app(app)
 
     # register blueprints
-    from service.api.plus import plus_blueprint
-    app.register_blueprint(plus_blueprint, url_prefix='/plus')
+    from service.api.divide import divide_blueprint
+    app.register_blueprint(divide_blueprint, url_prefix='/divide')
 
     # Setup models for DB operations
     with app.app_context():

@@ -21,7 +21,7 @@ class MinusResult(db.Model):
     id = db.Column(Integer, primary_key=True)
     operand_1 = db.Column(Integer)
     operand_2 = db.Column(Integer)
-    operator = db.Column(String(1), default='+')
+    operator = db.Column(String(1), default='-')
     result = db.Column(Integer)
     date = db.Column(DateTime, unique=False, default=datetime)
 
