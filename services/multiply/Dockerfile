@@ -1,4 +1,5 @@
-FROM python:3.9-slim
+#FROM python:3.9-slim
+FROM public.ecr.aws/bitnami/python:3.9.1
 
 #ENV FLASK_APP=$FLASK_APP
 #ENV FLASK_ENV=$FLASK_ENV
@@ -17,12 +18,12 @@ RUN apt-get -y upgrade
 RUN apt-get clean
 RUN rm -rf /var/lib/apt/lists/*
 
-RUN mkdir /app
-WORKDIR /app
-ADD requirements.txt /app
+RUN mkdir /serivce-app
+WORKDIR /serivce-app
+ADD requirements.txt /serivce-app
 RUN pip3 install -r requirements.txt
-ADD . /app
-EXPOSE 80
+ADD . /serivce-app
+EXPOSE 5000
 RUN chmod +x ./entrypoint.sh
 #CMD python3 -m http.server 8000
 #ENTRYPOINT ["sh", "entrypoint.sh"]
