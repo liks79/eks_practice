@@ -1,3 +1,12 @@
+"""
+    service/api/multiply.py
+    ~~~~~~~~~~~~~~~~~~~~~~~
+
+    :description: Microservice for plus operation
+    :copyright: © 2020 written by Sungshik Jou.
+    :license: MIT, see LICENSE for more details.
+"""
+
 import socket
 from service import db
 from flask import jsonify
@@ -11,11 +20,11 @@ from datetime import datetime
 
 multiply_blueprint = Blueprint('multiply', __name__)
 api = Api(multiply_blueprint, doc='/swagger/', title='multiply',
-          description='multiply-operation: \n prefix url "/plus" is already exist.', version='0.1')
+          description='multiply-operation: \n prefix url "/multiply" is already exist.', version='0.1')
 
 user_input = api.model('multiply_operation', {
-    'operand_1': fields.Integer,
-    'operand_2': fields.Integer
+    'operand_1': fields.Float,
+    'operand_2': fields.Float
 })
 
 

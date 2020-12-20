@@ -7,7 +7,6 @@
     :license: MIT, see LICENSE for more details.
 """
 
-
 import socket
 from service import db
 from flask import jsonify
@@ -19,9 +18,9 @@ from jsonschema import ValidationError
 from werkzeug.exceptions import BadRequest, InternalServerError
 from datetime import datetime
 
-plus_blueprint = Blueprint('plus', __name__)
-api = Api(plus_blueprint, doc='/swagger/', title='plus',
-          description='plus-operation: \n prefix url "/plus" is already exist.', version='0.1')
+minus_blueprint = Blueprint('plus', __name__)
+api = Api(minus_blueprint, doc='/swagger/', title='plus',
+          description='minus-operation: \n prefix url "/minus" is already exist.', version='0.1')
 
 user_input = api.model('plus_operation', {
     'operand_1': fields.Float,
@@ -53,14 +52,14 @@ class Run(Resource):
             validated = validate_operands(req_data)
             input = validated['data']
             app.logger.debug(input)
-            result = input['operand_1'] + input['operand_2']
+            result = input['operand_1'] - input['operand_2']
 
             response = {
                 'operand_1': input['operand_1'],
-                'operation': '+',
+                'operation': '-',
                 'operand_2': input['operand_2'],
                 'result': result,
-                'expression': '{0} + {1} = {2}'.format(
+                'expression': '{0} - {1} = {2}'.format(
                     input['operand_1'], input['operand_2'], result),
                 'from': get_ip_addr(),
                 'date': datetime.now()

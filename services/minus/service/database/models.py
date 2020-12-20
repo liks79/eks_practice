@@ -7,17 +7,16 @@
     :license: MIT, see LICENSE for more details.
 """
 
-
 from sqlalchemy import DateTime, Integer, String
 from datetime import datetime
 from service import db
 
 
-class PlusResult(db.Model):
+class MinusResult(db.Model):
     """
     Database Model class for plus_result table
     """
-    __tablename__ = 'plus_result'
+    __tablename__ = 'minus_result'
 
     id = db.Column(Integer, primary_key=True)
     operand_1 = db.Column(Integer)

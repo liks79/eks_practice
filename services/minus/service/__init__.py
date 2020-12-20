@@ -68,7 +68,7 @@ def create_app(script_info=None):
 
     # register blueprints
     from service.api.minus import minus_blueprint
-    app.register_blueprint(minus_blueprint, url_prefix='/plus')
+    app.register_blueprint(minus_blueprint, url_prefix='/minus')
 
     # Setup models for DB operations
     with app.app_context():

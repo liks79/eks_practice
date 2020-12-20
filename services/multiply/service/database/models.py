@@ -1,3 +1,11 @@
+"""
+    service/database/models.py
+    ~~~~~~~~~~~~~~~~~~~~~~~
+
+    :description: Microservice for plus operation
+    :copyright: © 2020 written by Sungshik Jou.
+    :license: MIT, see LICENSE for more details.
+"""
 
 from sqlalchemy import DateTime, Integer, String
 from datetime import datetime
@@ -8,7 +16,7 @@ class MultiplyResult(db.Model):
     """
     Database Model class for plus_result table
     """
-    __tablename__ = 'plus_result'
+    __tablename__ = 'multiply_result'
 
     id = db.Column(Integer, primary_key=True)
     operand_1 = db.Column(Integer)
