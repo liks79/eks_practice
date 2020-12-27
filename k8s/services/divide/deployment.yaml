@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: divide-api
+  namespace: calculator
+  labels:
+    app: divide-api
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: divide-api
+  template:
+    metadata:
+      labels:
+        app: divide-api
+    spec:
+      containers:
+      - image: 389833669077.dkr.ecr.us-west-2.amazonaws.com/eks_practice_divide:8a86c75
+        imagePullPolicy: Always
+        name: divide-api       
+        ports:
+        - containerPort: 5000

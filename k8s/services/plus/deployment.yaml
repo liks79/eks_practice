@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: plus-api
+  namespace: calculator
+  labels:
+    app: plus-api
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: plus-api
+  template:
+    metadata:
+      labels:
+        app: plus-api
+    spec:
+      containers:
+      - image: 389833669077.dkr.ecr.us-west-2.amazonaws.com/eks_practice_plus:8a86c75
+        imagePullPolicy: Always
+        name: plus-api       
+        ports:
+        - containerPort: 5000

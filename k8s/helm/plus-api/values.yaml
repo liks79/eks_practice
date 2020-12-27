@@ -1,0 +1,35 @@
+environment: development
+namespace: calculator
+hpa:
+  minReplicas: 3
+  maxReplicas: 12
+  cpu: 60
+container:
+  name: plus-api
+  port: 5000
+  image: IMAGE_URI_PLUS_API
+  tag: 8a86c75
+  imagePullPolicy: Always
+  resources:
+    memory: 200Mi
+    cpu: 200m
+  limits:
+    memory: 400Mi
+    cpu: 400m
+  livenessProbe:
+    httpGet:
+      path: /plus/ping
+      port: 5000
+    initialDelaySeconds: 3
+    periodSeconds: 3
+  readinessProbe:
+    httpGet:
+      path: /plus/ping
+      port: 5000
+    initialDelaySeconds: 5
+    periodSeconds: 5
+  pdb:
+    minAvailable: 2
+replicas: 3
+service:
+  port: 80

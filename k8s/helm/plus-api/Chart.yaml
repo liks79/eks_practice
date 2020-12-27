@@ -1,0 +1,4 @@
+name: plus-api
+sources:
+- https://github.com/cloudnativedevops/cloudnatived
+version: 1.0.0

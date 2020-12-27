@@ -1,0 +1,25 @@
+---
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+  name: k8s-bp
+  region: us-west-2
+  version: "1.18"
+
+availabilityZones: ["us-west-2a", "us-west-2b", "us-west-2c"]
+
+managedNodeGroups:
+- name: nodegroup
+  desiredCapacity: 3
+  ssh:
+    allow: true
+    publicKeyName: playground
+
+# To enable all of the control plane logs, uncomment below:
+# cloudWatch:
+#  clusterLogging:
+#    enableTypes: ["*"]
+
+secretsEncryption:
+  keyARN: arn:aws:kms:us-west-2:389833669077:key/2ee4a52c-8948-4cb1-a65d-cbb65c77c321

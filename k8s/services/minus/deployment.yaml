@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: minus-api
+  namespace: calculator
+  labels:
+    app: minus-api
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: minus-api
+  template:
+    metadata:
+      labels:
+        app: minus-api
+    spec:
+      containers:
+      - image: 389833669077.dkr.ecr.us-west-2.amazonaws.com/eks_practice_minus:8a86c75
+        imagePullPolicy: Always
+        name: minus-api       
+        ports:
+        - containerPort: 5000

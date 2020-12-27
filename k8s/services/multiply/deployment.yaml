@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: multiply-api
+  namespace: calculator
+  labels:
+    app: multiply-api
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: multiply-api
+  template:
+    metadata:
+      labels:
+        app: multiply-api
+    spec:
+      containers:
+      - image: 389833669077.dkr.ecr.us-west-2.amazonaws.com/eks_practice_multiply:8a86c75
+        imagePullPolicy: Always
+        name: multiply-api       
+        ports:
+        - containerPort: 5000

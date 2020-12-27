@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.container.name }}
+  namespace: {{ .Values.namespace }}
+  labels:
+    app: {{ .Values.container.name }}
+spec:
+  replicas: {{ .Values.replicas }}
+  selector:
+    matchLabels:
+      app: {{ .Values.container.name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.container.name }}
+        environment: {{ .Values.environment }}
+    spec:
+      containers:
+        - name: {{ .Values.container.name }}
+          image: {{ .Values.container.image }}:{{ .Values.container.tag }}
+          imagePullPolicy: {{ .Values.container.imagePullPolicy }}
+          ports:
+            - containerPort: {{ .Values.container.port }}
+          env:
+            - name: environment
+              value: {{ .Values.environment }}
+          resources:
+            requests:
+              memory: {{ .Values.container.resources.memory }}
+              cpu: {{ .Values.container.resources.cpu }}
+            # limits:
+            #   memory: {{ .Values.container.limits.memory }}
+            #   cpu: {{ .Values.container.limits.cpu }}
+          # livenessProbe:
+          #   httpGet:
+          #     path: {{ .Values.container.livenessProbe.httpGet.path }}
+          #     port: {{ .Values.container.livenessProbe.httpGet.port }}
+          #   initialDelaySeconds: {{ .Values.container.livenessProbe.initialDelaySeconds }}
+          #   periodSeconds: {{ .Values.container.livenessProbe.periodSeconds }}
+          readinessProbe:
+            httpGet:
+              path: {{ .Values.container.readinessProbe.httpGet.path }}
+              port: {{ .Values.container.readinessProbe.httpGet.port }}
+            initialDelaySeconds: {{ .Values.container.readinessProbe.initialDelaySeconds }}
+            periodSeconds: {{ .Values.container.readinessProbe.periodSeconds }}
+          
+          securityContext:
+            runAsUser: 1000
+            runAsNonRoot: true
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop: ["all"]
+              add: ["NET_BIND_SERVICE"]
+
+  
+
