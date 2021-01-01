@@ -7,7 +7,7 @@ hpa:
 container:
   name: multiply-api
   port: 5000
-  image: ACCOUNT_ID.dkr.ecr.us-west-2.amazonaws.com/eks_practice_multiply
+  image: 389833669077.dkr.ecr.us-west-2.amazonaws.com/eks_practice_multiply
   tag: 8a86c75
   imagePullPolicy: Always
   resources:

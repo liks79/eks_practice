@@ -7,7 +7,7 @@ hpa:
 container:
   name: plus-api
   port: 5000
-  image: ACCOUNT_ID.dkr.ecr.us-west-2.amazonaws.com/eks_practice_plus
+  image: 389833669077.dkr.ecr.us-west-2.amazonaws.com/eks_practice_plus
   tag: 8a86c75
   imagePullPolicy: Always
   resources:
