@@ -13,7 +13,7 @@ phases:
     commands:
       - echo Build started on `date`
       - echo Building the Docker image...
-      - cd ${CODEBUILD_SRC_DIR}/services/plus/
+      - cd ${CODEBUILD_SRC_DIR}/apps/plus/
       - REPOSITORY_URI=389833669077.dkr.ecr.us-west-2.amazonaws.com/eks_practice_plus
       - docker build -t $REPOSITORY_URI:latest .
       - docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:$IMAGE_TAG
@@ -22,7 +22,7 @@ phases:
       - echo =======================================================
       - echo Build started on `date`
       - echo Building the Docker image...
-      - cd ${CODEBUILD_SRC_DIR}/services/minus/
+      - cd ${CODEBUILD_SRC_DIR}/apps/minus/
       - REPOSITORY_URI=389833669077.dkr.ecr.us-west-2.amazonaws.com/eks_practice_minus
       - docker build -t $REPOSITORY_URI:latest .
       - docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:$IMAGE_TAG
@@ -31,7 +31,7 @@ phases:
       - echo =======================================================
       - echo Build started on `date`
       - echo Building the Docker image...
-      - cd ${CODEBUILD_SRC_DIR}/services/divide/
+      - cd ${CODEBUILD_SRC_DIR}/apps/divide/
       - REPOSITORY_URI=389833669077.dkr.ecr.us-west-2.amazonaws.com/eks_practice_divide
       - docker build -t $REPOSITORY_URI:latest .
       - docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:$IMAGE_TAG
@@ -40,7 +40,7 @@ phases:
       - echo =======================================================
       - echo Build started on `date`
       - echo Building the Docker image...
-      - cd ${CODEBUILD_SRC_DIR}/services/multiply/
+      - cd ${CODEBUILD_SRC_DIR}/apps/multiply/
       - REPOSITORY_URI=389833669077.dkr.ecr.us-west-2.amazonaws.com/eks_practice_multiply
       - docker build -t $REPOSITORY_URI:latest .
       - docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:$IMAGE_TAG
