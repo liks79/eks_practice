@@ -16,7 +16,7 @@ spec:
         app: multiply-api
     spec:
       containers:
-      - image: 389833669077.dkr.ecr.us-west-2.amazonaws.com/eks_practice_multiply:8a86c75
+      - image: ACCOUNT_ID.dkr.ecr.us-west-2.amazonaws.com/eks_practice_multiply:8a86c75
         imagePullPolicy: Always
         name: multiply-api       
         ports:
