@@ -105,5 +105,11 @@ venv.bak/
 # pycharm
 .idea
 
-# chalice deployments
-LAB04/02-CloudAlbum-Chalice/cloudalbum/.chalice/deployments
+
+k8s/cluster/cluster.yaml
+k8s/helm/divide-api/values.yaml
+k8s/helm/minus-api/values.yaml
+k8s/helm/multiply-api/values.yaml
+k8s/helm/plus-api/values.yaml
+
+
